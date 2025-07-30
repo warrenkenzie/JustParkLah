@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "grammy": "^1.37.0",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.1.0"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "ts-node src/bot.ts",
+    "build": "tsc",
+    "start": "node src/bot.js"
+  }
+}
