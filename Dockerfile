@@ -7,7 +7,6 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# Create cron jobs
 RUN echo "* * * * * node /app/build/script/UpdateCarParkAvailability.js >> /var/log/cron.log 2>&1" > /etc/crontabs/root \
  && echo "0 0 * * * node /app/build/script/UpdateHDBCarparkInformation.js >> /var/log/cron.log 2>&1" >> /etc/crontabs/root \
  && touch /var/log/cron.log
