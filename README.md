@@ -70,9 +70,11 @@ This brief explanation assumes you have docker installed
 
 ## Contributing
 
-This project is **accepting contributions**. If you'd like to have a go at the source code, contribute, provide suggestions and critique, by all means! I welcome your involvement.
+If you’d like to dive into the source code, suggest improvements, or share feedback, your involvement is greatly appreciated.
 
-If there is an issue — like a spelling or grammatical error, a visual bug, or other kinds of weird things happening — please feel free to [create an issue](https://github.com/warrenkenzie/JustParkLah/issues/new). If you would like to leave comments about the source code — like possible design and code improvements, or other kinds of feedback — please feel free to [create an issue]() too if you wish!
+Found an [issue](https://github.com/warrenkenzie/JustParkLah/issues/new) — whether it’s a typo, grammatical mistake, visual glitch, or any other odd behavior? Please don’t hesitate to open an issue.
+
+If you’d like to leave comments on the source code — such as ideas for design improvements, code optimizations, or general feedback — feel free to create an [issue](https://github.com/warrenkenzie/JustParkLah/issues/new) as well. Any feedback received is valued and appreciated - whether big or small, it helps make the project better and me learning more!
 
 ## Licence
 
