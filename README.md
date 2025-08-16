@@ -61,6 +61,13 @@ Running through the above method will help start the bot, however it does not in
 
 ### Getting Started: Docker
 
+This brief explanation assumes you have docker installed
+
+1. you only need to run one command, replace the placeholders with < and > with their respective variables, do note if you are using a MongoDB on your laptop/pc, you would have to indicate the ip address of your machine and not localhost, example is instead of "mongodb://localhost:27017", you would need to insert "mongodb://yourMachineIP:27017"
+   ```
+   docker run -d --name justparklah -e TELEGRAM_BOT_TOKEN='<add token>' -e DB_CONN_STRING='<add mongodb url>' warken/justparklah:latest
+   ```
+
 ## Contributing
 
 This project is **accepting contributions**. If you'd like to have a go at the source code, contribute, provide suggestions and critique, by all means! I welcome your involvement.
