@@ -1,5 +1,5 @@
 import * as dotenv from "dotenv";
-import { connectToDatabaseMongoose } from "../utils/MongoDBUtils";
+import { connectToDatabaseMongoose, ifCollectionExists } from "../utils/MongoDBUtils";
 import { HDBCarparkInformationModel } from "../class/HDBCarparkInformationModel"; 
 import { convertCoordinatesToLogLat } from "../utils/Utils";
 import mongoose from "mongoose";
@@ -7,9 +7,10 @@ import mongoose from "mongoose";
 dotenv.config();
 updateCarParkInformation()
 async function updateCarParkInformation() {
-    await connectToDatabaseMongoose();
-    await HDBCarparkInformationModel.deleteMany({});
     try {
+        connectToDatabaseMongoose();
+        const checkIfCollectionExists = await ifCollectionExists(HDBCarparkInformationModel.collection.name) || false
+        if(checkIfCollectionExists) await HDBCarparkInformationModel.deleteMany({});
         const carParkInfoResult = await getCarParkInfo();
         if (carParkInfoResult instanceof Error) throw carParkInfoResult;
         const [nextOffset, newTotal] = carParkInfoResult;
@@ -46,7 +47,7 @@ async function getCarParkInfo(offset: number = 0): Promise<[number, number] | Er
     if (!data || !data.result || !data.result.records) {
         return new Error("Invalid data format");
     }
-
+    
     await HDBCarparkInformationModel.insertMany(
         data.result.records.map((record: any) => {
             const x_coord = Number(record.x_coord);

@@ -1,5 +1,5 @@
 import * as dotenv from "dotenv";
-import { connectToDatabaseMongoose } from "../utils/MongoDBUtils";
+import { connectToDatabaseMongoose, ifCollectionExists } from "../utils/MongoDBUtils";
 import { CarParkAvailabilityModel } from "../class/CarParkAvailabilityModel";
 import mongoose from "mongoose";
 dotenv.config()
@@ -20,7 +20,8 @@ async function updateCarParkAvailability() {
             throw new Error("Invalid data format");
         }
         
-        await CarParkAvailabilityModel.deleteMany({});
+        const checkCollectionExists = await ifCollectionExists(CarParkAvailabilityModel.collection.name) || false
+        if(checkCollectionExists) await CarParkAvailabilityModel.deleteMany({})
         await CarParkAvailabilityModel.insertMany(
             data.items[0].carpark_data.map((carpark: any) => {
                 return new CarParkAvailabilityModel({

@@ -6,4 +6,3 @@ src/bot.js
 
 # Environment
 .env
-.env.*

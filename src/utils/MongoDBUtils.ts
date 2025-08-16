@@ -15,7 +15,10 @@ export async function connectToDatabase(): Promise<{ client: mongoDB.MongoClient
 }
 
 export async function connectToDatabaseMongoose() {
-    mongoose.connect(`${process.env.DB_CONN_STRING}/${process.env.DB_NAME}`);
-    const db = mongoose.connection;
-    console.info(`Successfully connected to database through mongoose: ${db.name}`);
+    await mongoose.connect(`${process.env.DB_CONN_STRING}/${process.env.DB_NAME}`);
+    console.info("Successfully connected to database through mongoose");
+}
+
+export async function ifCollectionExists(mongooseCollectionName: string): Promise<Boolean | undefined>{
+    return await mongoose.connection.db?.listCollections({ name: mongooseCollectionName }).hasNext();
 }
